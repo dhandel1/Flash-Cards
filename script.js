@@ -1,28 +1,51 @@
-//contains code to flip the card
+// flip the card
 
 $("#flip").click(function(){
     $("#card").toggleClass("flipped");
 });
 
-//this is the array of images
+// array of images
 
-// var imgNames = ('images/picard.jpg', 'images/worf.jpg', 'images/spock.jpg');
+let cards = [
+  { front:'picard.jpg', back:'It\'s Picard!'},
+  { front:'worf.jpg', back: 'It\'s Worf!'},
+  { front:'spock.jpg', back: 'It\'s Spock!'},
+  { front:'wesley.jpg', back: 'It\'s Wesley!'},
+  { front:'data.jpg', back: 'It\'s Data!'},
+  { front:'quark.jpg', back: 'It\'s Quark!'},
+  { front:'scotty.jpg', back: 'It\'s Scotty!'}
+];
 
-//this is code to move to next card when marked correct
+// get a random card out of the array
+let current_card_index = Math.floor(Math.random()*cards.length)
+let current_card = cards[current_card_index];
 
+// display the card
+$('#card .front').css('background', `url(${current_card.front})`);
+$('#card .back').html(current_card.back);
+
+//  move to next card when marked correct
 $('#correct').click(function() {
-    $('#card .front').each(function( index, element ) {
-      $('#card .front').css('background', 'url(spock.jpg)');  
-      $('#card .back').html('Its Spock!');  
-    });
+  // remove card from array
+  cards = cards.splice(current_card_index)
+  // get new card
+  if (cards.length) {
+    // display new card
+    current_card_index = Math.floor(Math.random()*cards.length)
+    current_card = cards[current_card_index];
+    $('#card .front').css('background', `url(${current_card.front})`);
+    $('#card .back').html(current_card.back);
+  } else {
+    // they got the powerup and won the game!
+    alert("You've answered all the cards!")
+  }
 });
 
-//this is code to mark incorrect, leave in array and move to next card
-
+// mark incorrect, leave in array and move to next card
 
 $('#wrong').click(function() {
-    $('#card .front').each(function( index, element ) {
-      $('#card .front').css('background', 'url(spock.jpg)');  
-      $('#card .back').html('Its Spock!');  
-    });
+  current_card_index = Math.floor(Math.random()*cards.length)
+  current_card = cards[current_card_index];
+  $('#card .front').css('background', `url(${current_card.front})`);
+  $('#card .back').html(current_card.back);
 });

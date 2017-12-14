@@ -61,11 +61,9 @@ figure {
     background: url("picard.jpg");
 }
 #card .back {
-    /* background: blue; */
     transform: rotateY( 180deg );
     line-height: 250px;
     text-align: center;
-    text: "Its Captain Picard!"
 }
 
 #card.flipped {
