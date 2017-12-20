@@ -14,8 +14,8 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 10px;
-
 }
+
 h4 {
     display: flex;
     justify-content: center;
@@ -37,7 +37,6 @@ figure {
     height: 250px;
     justify-content: center;
     perspective: 800px;
-
 }
 
 #card {
